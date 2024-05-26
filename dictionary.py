@@ -8,8 +8,6 @@ nltk.download('words')
 
 nltk.download('wordnet')
 
-
-   
 def word_exists(word):
     synsets = wordnet.synsets(word)
     word_list = words.words()
@@ -22,8 +20,6 @@ def word_exists(word):
         return True, definition
     else:
         return False, ""
-
-
 
 
 def translate_word(word, source_lang='en', target_lang='es'):
