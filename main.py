@@ -1,5 +1,5 @@
 import streamlit as st
-import manage_csv as mcsv
+import manage_json as mjson
 import dictionary as dct
 import time
 
@@ -10,8 +10,8 @@ def save_word(new_word):
     with st.spinner('Loading...'):
         exists, definition = dct.word_exists(new_word)
         if exists:
-            print(exists)
-            mcsv.insert_word(new_word, dct.translate_word(new_word), definition)
+            mjson.insert_word(new_word, dct.translate_word(new_word), definition)
+        print(exists)
     return exists
 
 # User interface
@@ -27,7 +27,7 @@ with st.form(key="new_word_form"):
             st.error("The word does not exist")
 
 
-words = mcsv.get_words()
+words = mjson.get_words()
 words.reverse()
 for word in words:
     col1, col2 = st.columns(2)
