@@ -2,7 +2,7 @@ import csv
 
 def get_words():
     with open("data/words.csv", "r") as file:
-        reader = csv.DictReader(file)
+        reader = csv.DictReader(file, delimiter=";")
         words = []
         for row in reader:
             words.append(row)
