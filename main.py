@@ -29,12 +29,21 @@ with st.form(key="new_word_form"):
 
 words = mjson.get_words()
 words.reverse()
-for word in words:
+for index, word in enumerate(words):
     col1, col2 = st.columns(2)
     with col1:
         st.write(f"<p style='font-size: 30px;'>{word['word']}</p>", unsafe_allow_html=True)
     with col2:
         st.write(f"<p style='font-size: 30px;'>{word['translation']}</p>", unsafe_allow_html=True)
         
-    with st.expander("Definition"):
-        st.write(word["definitions"])
+    col3, col4 = st.columns([6,1])
+
+    with col3:
+        with st.expander("Definition"):
+            st.write(word["definitions"])
+    with col4:
+        st.button("Delete", key="delete_btn_" + str(index))
+        if st.session_state["delete_btn_" + str(index)]:
+            mjson.delete_word(index)
+            st.experimental_rerun()
+    
