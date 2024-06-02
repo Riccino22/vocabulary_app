@@ -3,6 +3,7 @@ import manage_json as mjson
 import dictionary as dct
 import time
 
+print("New user")
 st.title("Insert a new word")
 
 # Function to save a new word
